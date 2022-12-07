@@ -76,7 +76,6 @@ app.get('/', (req, res) => {
   const id = Number(req.params.id)  
   const user = users.find(user => user.id === id)
   res.json(user)
-
 })
 
 
@@ -94,20 +93,32 @@ app.delete('/api/users/:id', (req, res) => {
 })
 
 // ajouter créer un user 
-app.post('/api/users', (req, res) => {  
-	const user = req.body 
+// app.post('/api/users', (req, res) => {  
+// 	const user = req.body 
+// 	users.push({
+// 		id : 5,
+//     "nom" : "connier",
+//     "prenom" : "jf"
+// 	},
+// 	{
+// 		id : 6,
+//     "nom" : "pop",
+//     "prenom" : "loli" 
+// 	}
+// 	) 
+// 	console.log(user)  
+// 	res.json(users)
+// })
+
+// ajouter créer un user dynamique
+app.post('/api/users', (req, res) => {
+	const { id, nom, prenom } = req.body
+	// console.log(id, nom, prenom);
 	users.push({
-		id : 5,
-    "nom" : "connier",
-    "prenom" : "jf"
-	},
-	{
-		id : 6,
-    "nom" : "pop",
-    "prenom" : "loli"
-	}
-	) 
-	console.log(user)  
+		id,
+		nom,
+		prenom
+	})
 	res.json(users)
 })
 
